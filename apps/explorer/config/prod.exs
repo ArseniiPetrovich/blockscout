@@ -2,7 +2,10 @@ use Mix.Config
 
 # Configures the database
 config :explorer, Explorer.Repo,
-  url: System.get_env("DATABASE_URL"),
+  database: System.get_env("DB_NAME"),
+  hostname: System.get_env("DB_HOST"),
+  username: System.get_env("DB_USER"),
+  password: System.get_env("DB_PASS"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: String.equivalent?(System.get_env("ECTO_USE_SSL") || "true", "true"),
   prepare: :unnamed,
